@@ -9,7 +9,7 @@ import {
   Col,
   Table,
 } from "antd";
-import { CSVLink, CSVDownload } from "react-csv";
+import { ExportToExcel } from "./ExportToExcel";
 import * as XLSX from "xlsx";
 import { UploadOutlined } from "@ant-design/icons";
 import { useState, useCallback } from "react";
@@ -34,22 +34,17 @@ const normFile = (e) => {
 
   return e && e.fileList;
 };
-function useForceUpdate() {
-  const [value, setValue] = useState(0); // integer state
-  return () => setValue((value) => value + 1); // update the state to force render
-}
 
 export default function ForceForm() {
-  const forceUpdate = useForceUpdate();
-  const headers = [
-    { label: "Trường hợp", key: "case" },
-    { label: "Qx(T)", key: "qx" },
-    { label: "Qy(T)", key: "qy" },
-    { label: "N(T)", key: "n" },
-    { label: "Mx(T)", key: "mx" },
-    { label: "My(T)", key: "my" },
-    { label: "Mz(T)", key: "mz" },
-  ];
+  // const headers = [
+  //   { label: "Trường hợp", key: "case" },
+  //   { label: "Qx(T)", key: "qx" },
+  //   { label: "Qy(T)", key: "qy" },
+  //   { label: "N(T)", key: "n" },
+  //   { label: "Mx(T)", key: "mx" },
+  //   { label: "My(T)", key: "my" },
+  //   { label: "Mz(T)", key: "mz" },
+  // ];
 
   const [wb, setWb] = useState();
   const [sheetNames, setSheetNames] = useState([]);
@@ -67,8 +62,6 @@ export default function ForceForm() {
   // });
 
   const [dataRow, setDataRow] = useState([]);
-  console.log(allLoadcase);
-  console.log({ sheetNames }, { wb });
 
   const readExcel = (file) => {
     const fileReader = new FileReader();
@@ -341,7 +334,8 @@ export default function ForceForm() {
   );
 
   const onClickSaveData = () => {
-    setAllData({ ...allData, [selectedSheet]: dataRow });
+    const newData = { ...allData, [selectedSheet]: dataRow };
+    setAllData(newData);
   };
   const onSelectSheet = (value) => {
     setSelectedCase([]);
@@ -364,11 +358,10 @@ export default function ForceForm() {
     setAllLoadCase(lcase);
   };
   const onClickLoadCase = (name) => {
-    const newAbc = !selectedCases.includes(name)
+    const newLoadCases = !selectedCases.includes(name)
       ? [...selectedCases, name]
       : selectedCases.filter((item) => item !== name);
-    setSelectedCase(newAbc);
-    console.log(newAbc);
+    setSelectedCase(newLoadCases);
   };
   const onFinish = (values) => {
     console.log("Received values of form: ", values);
@@ -499,9 +492,7 @@ export default function ForceForm() {
               dataSource={[...dataRow]}
               scroll={{ x: 100 }}
             />
-            <CSVLink data={dataRow} headers={headers}>
-              ABC
-            </CSVLink>
+            <ExportToExcel allData={allData} fileName={"myFile"} />
           </Col>
         </Row>
       </Form>
