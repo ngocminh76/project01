@@ -91,6 +91,10 @@ export default function ForceForm() {
   };
   const handleGetForce = useCallback(
     (unit) => {
+      if (selectedCases.length !== 4) {
+        alert("Please select 4 cases");
+        return;
+      }
       const rowValues = row;
       console.log(rowValues);
       const itemWithMaxFz = rowValues.reduce(function (prev, current) {
@@ -340,6 +344,7 @@ export default function ForceForm() {
     setAllData({ ...allData, [selectedSheet]: dataRow });
   };
   const onSelectSheet = (value) => {
+    setSelectedCase([]);
     setSelectedSheet(value);
     const ws = wb.Sheets[value];
     console.log("ws", ws);
@@ -358,8 +363,10 @@ export default function ForceForm() {
     console.log({ lcase });
     setAllLoadCase(lcase);
   };
-  const onClickLoadCase = (e) => {
-    const newAbc = [...selectedCases, e.target.value];
+  const onClickLoadCase = (name) => {
+    const newAbc = !selectedCases.includes(name)
+      ? [...selectedCases, name]
+      : selectedCases.filter((item) => item !== name);
     setSelectedCase(newAbc);
     console.log(newAbc);
   };
@@ -462,7 +469,12 @@ export default function ForceForm() {
               <h3>Load Case</h3>
               {allLoadcase.map((name, index) => (
                 <div>
-                  <Checkbox key={index} value={name} onClick={onClickLoadCase}>
+                  <Checkbox
+                    checked={selectedCases.includes(name)}
+                    key={index}
+                    value={name}
+                    onClick={() => onClickLoadCase(name)}
+                  >
                     {name}
                   </Checkbox>
                 </div>
