@@ -125,204 +125,195 @@ export default function ForceForm() {
 
       const rows = [
         {
-          case: "Lực nén max",
-          qx: (+unit * MaxFz.Horizontal).toFixed(2),
-          qy: (+unit * MaxFz.__EMPTY_1).toFixed(2),
-          n: (+unit * MaxFz.Vertical).toFixed(2),
-          mx: (+unit * MaxFz.Moment).toFixed(2),
-          my: (+unit * MaxFz.__EMPTY_2).toFixed(2),
-          mz: (+unit * MaxFz.__EMPTY_3).toFixed(2),
-        },
-        {
           case: "Lực nhổ max",
-          qx: (+MinFz.Horizontal * unit).toFixed(2),
-          qy: (+MinFz.__EMPTY_1 * unit).toFixed(2),
-          n: (+MinFz.Vertical * unit).toFixed(2),
-          mx: (+MinFz.Moment * unit).toFixed(2),
-          my: (+MinFz.__EMPTY_2 * unit).toFixed(2),
-          mz: (+MinFz.__EMPTY_3 * unit).toFixed(2),
+          qx: +(+MinFz.Horizontal * unit).toFixed(2),
+          qy: +(+MinFz.__EMPTY_1 * unit).toFixed(2),
+          n: +(+MinFz.Vertical * unit).toFixed(2),
+          mx: +(+MinFz.Moment * unit).toFixed(2),
+          my: +(+MinFz.__EMPTY_2 * unit).toFixed(2),
+          mz: +(+MinFz.__EMPTY_3 * unit).toFixed(2),
         },
+
+        {
+          case: "Lực nén max",
+          qx: +(+unit * MaxFz.Horizontal).toFixed(2),
+          qy: +(+unit * MaxFz.__EMPTY_1).toFixed(2),
+          n: +(+unit * MaxFz.Vertical).toFixed(2),
+          mx: +(+unit * MaxFz.Moment).toFixed(2),
+          my: +(+unit * MaxFz.__EMPTY_2).toFixed(2),
+          mz: +(+unit * MaxFz.__EMPTY_3).toFixed(2),
+        },
+
         {
           case: "TH1_90 độ max",
-          qx: (
+          qx: +(
             +loadCaseTH1.reduce((a, b) => +a + +b.Horizontal, 0) * unit
           ).toFixed(2),
-          qy: (
+          qy: +(
             +loadCaseTH1.reduce((a, b) => +a + +b.__EMPTY_1, 0) * unit
           ).toFixed(2),
-          n: (
+          n: +(
             +loadCaseTH1.reduce((a, b) => +a + +b.Vertical, 0) * unit
           ).toFixed(2),
           mx: +(
             +loadCaseTH1.reduce((a, b) => +a + +b.Moment, 0) * unit +
-            (+loadCaseTH1[0].Vertical -
-              +loadCaseTH1[1].Vertical +
-              +loadCaseTH1[2].Vertical -
-              +loadCaseTH1[3].Vertical) *
-              unit *
-              valueBt
+            (+loadCaseTH1[0].Vertical * valueBt +
+              +loadCaseTH1[1].Vertical * valueBt +
+              +loadCaseTH1[2].Vertical * -valueBt +
+              +loadCaseTH1[3].Vertical * -valueBt) *
+              unit
           ).toFixed(2),
           my: +(
             +loadCaseTH1.reduce((a, b) => +a + +b.__EMPTY_2, 0) * unit +
-            (+loadCaseTH1[0].Vertical +
-              +loadCaseTH1[1].Vertical -
-              +loadCaseTH1[2].Vertical -
-              +loadCaseTH1[3].Vertical) *
-              valueBt *
+            (+loadCaseTH1[0].Vertical * valueBt +
+              +loadCaseTH1[1].Vertical * -valueBt +
+              +loadCaseTH1[2].Vertical * -valueBt +
+              +loadCaseTH1[3].Vertical * valueBt) *
               unit
           ).toFixed(2),
-
           mz: +(
             +loadCaseTH1.reduce((a, b) => +a + +b.__EMPTY_3, 0) * unit +
-            (+loadCaseTH1[0].__EMPTY_1 +
-              +loadCaseTH1[1].__EMPTY_1 -
-              +loadCaseTH1[2].__EMPTY_1 -
-              +loadCaseTH1[3].__EMPTY_1) *
-              unit *
-              valueBt +
-            (+loadCaseTH1[0].Horizontal -
-              +loadCaseTH1[1].Horizontal +
-              +loadCaseTH1[2].Horizontal -
-              +loadCaseTH1[3].Horizontal) *
-              unit *
-              valueBt
+            (+loadCaseTH1[0].__EMPTY_1 * valueBt +
+              +loadCaseTH1[1].__EMPTY_1 * -valueBt +
+              +loadCaseTH1[2].__EMPTY_1 * -valueBt +
+              +loadCaseTH1[3].__EMPTY_1 * valueBt) *
+              unit +
+            +(
+              +loadCaseTH1[0].Horizontal * valueBt +
+              +loadCaseTH1[1].Horizontal * -valueBt +
+              +loadCaseTH1[2].Horizontal * -valueBt +
+              +loadCaseTH1[3].Horizontal * valueBt
+            ) *
+              unit
           ).toFixed(2),
         },
         {
           case: "TH2_45 độ max",
-          qx: (
+          qx: +(
             +loadCaseTH2.reduce((a, b) => +a + +b.Horizontal, 0) * unit
           ).toFixed(2),
-          qy: (
+          qy: +(
             +loadCaseTH2.reduce((a, b) => +a + +b.__EMPTY_1, 0) * unit
           ).toFixed(2),
-          n: (
+          n: +(
             +loadCaseTH2.reduce((a, b) => +a + +b.Vertical, 0) * unit
           ).toFixed(2),
           mx: +(
             +loadCaseTH2.reduce((a, b) => +a + +b.Moment, 0) * unit +
-            (+loadCaseTH2[0].Vertical -
-              +loadCaseTH2[1].Vertical +
-              +loadCaseTH2[2].Vertical -
-              +loadCaseTH2[3].Vertical) *
-              unit *
-              valueBt
+            (+loadCaseTH2[0].Vertical * valueBt +
+              +loadCaseTH2[1].Vertical * valueBt +
+              +loadCaseTH2[2].Vertical * -valueBt +
+              +loadCaseTH2[3].Vertical * -valueBt) *
+              unit
           ).toFixed(2),
           my: +(
             +loadCaseTH2.reduce((a, b) => +a + +b.__EMPTY_2, 0) * unit +
-            (+loadCaseTH2[0].Vertical +
-              +loadCaseTH2[1].Vertical -
-              +loadCaseTH2[2].Vertical -
-              +loadCaseTH2[3].Vertical) *
-              valueBt *
+            (+loadCaseTH2[0].Vertical * valueBt +
+              +loadCaseTH2[1].Vertical * -valueBt +
+              +loadCaseTH2[2].Vertical * -valueBt +
+              +loadCaseTH2[3].Vertical * valueBt) *
               unit
           ).toFixed(2),
           mz: +(
             +loadCaseTH2.reduce((a, b) => +a + +b.__EMPTY_3, 0) * unit +
-            (+loadCaseTH2[0].__EMPTY_1 +
-              +loadCaseTH2[1].__EMPTY_1 -
-              +loadCaseTH2[2].__EMPTY_1 -
-              +loadCaseTH2[3].__EMPTY_1) *
-              unit *
-              valueBt +
-            (+loadCaseTH2[0].Horizontal -
-              +loadCaseTH2[1].Horizontal +
-              +loadCaseTH2[2].Horizontal -
-              +loadCaseTH2[3].Horizontal) *
-              unit *
-              valueBt
+            (+loadCaseTH2[0].__EMPTY_1 * valueBt +
+              +loadCaseTH2[1].__EMPTY_1 * -valueBt +
+              +loadCaseTH2[2].__EMPTY_1 * -valueBt +
+              +loadCaseTH2[3].__EMPTY_1 * valueBt) *
+              unit +
+            +(
+              +loadCaseTH2[0].Horizontal * valueBt +
+              +loadCaseTH2[1].Horizontal * -valueBt +
+              +loadCaseTH2[2].Horizontal * -valueBt +
+              +loadCaseTH2[3].Horizontal * valueBt
+            ) *
+              unit
           ).toFixed(2),
         },
         {
           case: "TH3_Sự cố max",
-          qx: (
+          qx: +(
             +loadCaseTH3.reduce((a, b) => +a + +b.Horizontal, 0) * unit
           ).toFixed(2),
-          qy: (
+          qy: +(
             +loadCaseTH3.reduce((a, b) => +a + +b.__EMPTY_1, 0) * unit
           ).toFixed(2),
-          n: (
+          n: +(
             +loadCaseTH3.reduce((a, b) => +a + +b.Vertical, 0) * unit
           ).toFixed(2),
           mx: +(
             +loadCaseTH3.reduce((a, b) => +a + +b.Moment, 0) * unit +
-            (+loadCaseTH3[0].Vertical -
-              +loadCaseTH3[1].Vertical +
-              +loadCaseTH3[2].Vertical -
-              +loadCaseTH3[3].Vertical) *
-              unit *
-              valueBt
+            (+loadCaseTH3[0].Vertical * valueBt +
+              +loadCaseTH3[1].Vertical * valueBt +
+              +loadCaseTH3[2].Vertical * -valueBt +
+              +loadCaseTH3[3].Vertical * -valueBt) *
+              unit
           ).toFixed(2),
           my: +(
             +loadCaseTH3.reduce((a, b) => +a + +b.__EMPTY_2, 0) * unit +
-            (+loadCaseTH3[0].Vertical +
-              +loadCaseTH3[1].Vertical -
-              +loadCaseTH3[2].Vertical -
-              +loadCaseTH3[3].Vertical) *
-              valueBt *
+            (+loadCaseTH3[0].Vertical * valueBt +
+              +loadCaseTH3[1].Vertical * -valueBt +
+              +loadCaseTH3[2].Vertical * -valueBt +
+              +loadCaseTH3[3].Vertical * valueBt) *
               unit
           ).toFixed(2),
-
           mz: +(
             +loadCaseTH3.reduce((a, b) => +a + +b.__EMPTY_3, 0) * unit +
-            (+loadCaseTH3[0].__EMPTY_1 +
-              +loadCaseTH3[1].__EMPTY_1 -
-              +loadCaseTH3[2].__EMPTY_1 -
-              +loadCaseTH3[3].__EMPTY_1) *
-              unit *
-              valueBt +
-            (+loadCaseTH3[0].Horizontal -
-              +loadCaseTH3[1].Horizontal +
-              +loadCaseTH3[2].Horizontal -
-              +loadCaseTH3[3].Horizontal) *
-              unit *
-              valueBt
+            (+loadCaseTH3[0].__EMPTY_1 * valueBt +
+              +loadCaseTH3[1].__EMPTY_1 * -valueBt +
+              +loadCaseTH3[2].__EMPTY_1 * -valueBt +
+              +loadCaseTH3[3].__EMPTY_1 * valueBt) *
+              unit +
+            +(
+              +loadCaseTH3[0].Horizontal * valueBt +
+              +loadCaseTH3[1].Horizontal * -valueBt +
+              +loadCaseTH3[2].Horizontal * -valueBt +
+              +loadCaseTH3[3].Horizontal * valueBt
+            ) *
+              unit
           ).toFixed(2),
         },
         {
           case: "TH4_Thường xuyên TC",
-          qx: (
+          qx: +(
             +loadCaseTH4.reduce((a, b) => +a + +b.Horizontal, 0) * unit
           ).toFixed(2),
-          qy: (
+          qy: +(
             +loadCaseTH4.reduce((a, b) => +a + +b.__EMPTY_1, 0) * unit
           ).toFixed(2),
-          n: (
+          n: +(
             +loadCaseTH4.reduce((a, b) => +a + +b.Vertical, 0) * unit
           ).toFixed(2),
           mx: +(
             +loadCaseTH4.reduce((a, b) => +a + +b.Moment, 0) * unit +
-            (+loadCaseTH4[0].Vertical -
-              +loadCaseTH4[1].Vertical +
-              +loadCaseTH4[2].Vertical -
-              +loadCaseTH4[3].Vertical) *
-              unit *
-              valueBt
+            (+loadCaseTH4[0].Vertical * valueBt +
+              +loadCaseTH4[1].Vertical * valueBt +
+              +loadCaseTH4[2].Vertical * -valueBt +
+              +loadCaseTH4[3].Vertical * -valueBt) *
+              unit
           ).toFixed(2),
           my: +(
             +loadCaseTH4.reduce((a, b) => +a + +b.__EMPTY_2, 0) * unit +
-            (+loadCaseTH4[0].Vertical +
-              +loadCaseTH4[1].Vertical -
-              +loadCaseTH4[2].Vertical -
-              +loadCaseTH4[3].Vertical) *
-              valueBt *
+            (+loadCaseTH4[0].Vertical * valueBt +
+              +loadCaseTH4[1].Vertical * -valueBt +
+              +loadCaseTH4[2].Vertical * -valueBt +
+              +loadCaseTH4[3].Vertical * valueBt) *
               unit
           ).toFixed(2),
-
           mz: +(
             +loadCaseTH4.reduce((a, b) => +a + +b.__EMPTY_3, 0) * unit +
-            (+loadCaseTH4[0].__EMPTY_1 +
-              +loadCaseTH4[1].__EMPTY_1 -
-              +loadCaseTH4[2].__EMPTY_1 -
-              +loadCaseTH4[3].__EMPTY_1) *
-              unit *
-              valueBt +
-            (+loadCaseTH4[0].Horizontal -
-              +loadCaseTH4[1].Horizontal +
-              +loadCaseTH4[2].Horizontal -
-              +loadCaseTH4[3].Horizontal) *
-              unit *
-              valueBt
+            (+loadCaseTH4[0].__EMPTY_1 * valueBt +
+              +loadCaseTH4[1].__EMPTY_1 * -valueBt +
+              +loadCaseTH4[2].__EMPTY_1 * -valueBt +
+              +loadCaseTH4[3].__EMPTY_1 * valueBt) *
+              unit +
+            +(
+              +loadCaseTH4[0].Horizontal * valueBt +
+              +loadCaseTH4[1].Horizontal * -valueBt +
+              +loadCaseTH4[2].Horizontal * -valueBt +
+              +loadCaseTH4[3].Horizontal * valueBt
+            ) *
+              unit
           ).toFixed(2),
         },
       ];
@@ -423,7 +414,7 @@ export default function ForceForm() {
               <Form.Item name="input-number" noStyle>
                 <InputNumber
                   onChange={(v) => {
-                    setValueBt(v);
+                    setValueBt(v / 2);
                     console.log({ v });
                   }}
                 />
